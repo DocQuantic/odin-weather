@@ -11,7 +11,7 @@ class DayForecast {
 
 export async function fetchWeatherAPI(location, unit){
     try{
-        let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=${unit}&key=Z2MKQNK689WHSRQ7HELR6JHJ8&contentType=json`)
+        let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=${unit}&include=days%2Ccurrent&key=Z2MKQNK689WHSRQ7HELR6JHJ8&contentType=json`)
         let json = await response.json()
         return json
     } catch(error) {
