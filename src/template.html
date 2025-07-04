@@ -2,9 +2,86 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <title>Odin Weather App</title>
   </head>
   <body>
-    <h1>Hello, World!</h1>
+    <header>
+      <h1>Odin Weather App</h1>
+    </header>
+    <main>
+      <div class="city-select">
+        <form novalidate>
+          <label for="city">Enter the city of your choice</label>
+          <input id="city" for="city" type="text" pattern="^\w$">
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      <div class="forecast">
+        <h2>City Name</h2>
+        <div class="today">
+          <h3 class="condition">Condition</h3>
+          <div class="data">
+            <p class="current-temp">20</p>
+            <p class="min-max">20/21</p>
+            <p class="wind">20</p>
+          </div>
+          <div class="icon">
+            <img src="#">
+          </div>
+        </div>
+        <div class="next-days">
+          <div class="day">
+            <div class="data">
+              <p class="current-temp">20</p>
+              <p class="min-max">20/21</p>
+              <p class="wind">20</p>
+            </div>
+            <div class="icon">
+              <img src="#">
+            </div>
+          </div>
+          <div class="day">
+            <div class="data">
+              <p class="current-temp">20</p>
+              <p class="min-max">20/21</p>
+              <p class="wind">20</p>
+            </div>
+            <div class="icon">
+              <img src="#">
+            </div>
+          </div>
+          <div class="day">
+            <div class="data">
+              <p class="current-temp">20</p>
+              <p class="min-max">20/21</p>
+              <p class="wind">20</p>
+            </div>
+            <div class="icon">
+              <img src="#">
+            </div>
+          </div>
+          <div class="day">
+            <div class="data">
+              <p class="current-temp">20</p>
+              <p class="min-max">20/21</p>
+              <p class="wind">20</p>
+            </div>
+            <div class="icon">
+              <img src="#">
+            </div>
+          </div>
+          <div class="day">
+            <div class="data">
+              <p class="current-temp">20</p>
+              <p class="min-max">20/21</p>
+              <p class="wind">20</p>
+            </div>
+            <div class="icon">
+              <img src="#">
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
