@@ -1,4 +1,7 @@
 import "./styles.css";
-import { fetchWeatherAPI } from "./Modules/weather";
+import { fetchWeatherAPI, extractForecastFromJSON } from "./Modules/weather";
 
-console.log(await fetchWeatherAPI("Bordeaux", "metric"));
+let weatherData = await fetchWeatherAPI("Bordeaux", "metric")
+console.log(weatherData)
+
+console.log(extractForecastFromJSON(weatherData));

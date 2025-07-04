@@ -24,7 +24,9 @@ export function extractForecastFromJSON(json){
 
     let forecast = [];
     days.forEach((day) => {
-        const dayForecast = new DayForecast(day.temp, day.tempmin, day.tempmax, day.windspeed, day.icon);
+        const dayForecast = new DayForecast(day.datetime, day.temp, day.tempmin, day.tempmax, day.windspeed, day.icon);
         forecast.push(dayForecast) 
     })
+
+    return forecast
 }
