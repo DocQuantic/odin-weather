@@ -115,6 +115,10 @@ main{
           height: 1em;
         }
       }
+
+      > .icon img{
+        height: 4em;
+      }
     }
   }
 
