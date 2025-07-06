@@ -79,7 +79,8 @@ main{
 
   .today,
   .day{
-    border: 1px solid purple;
+    background-color: rgb(211, 170, 211);
+    border: 3px solid var(--nav-color);
     border-radius: 10px;
 
     display: grid;
@@ -87,13 +88,21 @@ main{
     grid-row: min-content 5fr;
     gap: 1rem;
 
-    padding: 0.3rem 5rem 1rem 5rem;
     text-align: center;
+
+    > h3,
+    > h4{
+      color: var(--title-color);
+      background-color: var(--nav-color);
+      padding: 0.3rem 5rem;
+    }
+
     > .weather{
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 2rem;
+      padding-bottom: 1rem;
     }
   }
 
