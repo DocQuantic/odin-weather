@@ -103,6 +103,18 @@ main{
       align-items: center;
       gap: 2rem;
       padding-bottom: 1rem;
+
+      > .data{
+        display: grid;
+        grid-template-columns: min-content auto;
+        gap: 0.2em;
+        justify-content: center;
+        align-items: center;
+
+        > img{
+          height: 1em;
+        }
+      }
     }
   }
 
