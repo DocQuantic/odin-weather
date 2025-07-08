@@ -1,5 +1,5 @@
 class DayForecast {
-    constructor(address, date, currentTemp, minTemp, maxTemp, wind, icon){
+    constructor(address, date, currentTemp, minTemp, maxTemp, wind, icon, description){
         this.address = address
         this.date = date
         this.currentTemp = currentTemp
@@ -7,6 +7,7 @@ class DayForecast {
         this.maxTemp = maxTemp
         this.wind = wind
         this.icon = icon
+        this.description = description
     }
 }
 
@@ -25,7 +26,7 @@ export function extractForecastFromJSON(json){
 
     let forecast = [];
     days.forEach((day) => {
-        const dayForecast = new DayForecast(json.resolvedAddress, day.datetime, day.temp, day.tempmin, day.tempmax, day.windspeed, day.icon);
+        const dayForecast = new DayForecast(json.resolvedAddress, day.datetime, day.temp, day.tempmin, day.tempmax, day.windspeed, day.icon, day.conditions);
         forecast.push(dayForecast) 
     })
 
