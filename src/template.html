@@ -11,7 +11,8 @@
     <main>
       <form class="city-select" novalidate>
         <label for="city">Enter the city of your choice: </label>
-        <input id="city" for="city" type="text" pattern="^\w$">
+        <input id="city" for="city" type="text" pattern="^[A-Za-z\- ]+$">
+        <p class="error-msg"></p>
         <button type="submit">Search</button>
       </form>
       <div class="forecast">
