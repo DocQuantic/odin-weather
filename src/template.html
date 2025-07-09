@@ -11,11 +11,13 @@
     <main>
       <form class="city-select" novalidate>
         <label for="city">Enter the city of your choice: </label>
-        <input id="city" for="city" type="text" pattern="^[A-Za-z\- ]+$">
-        <p class="error-msg"></p>
+        <div class="input-city">
+          <input id="city" for="city" type="text" pattern="^[A-Za-z\- ]+$">
+          <p class="error-msg hidden">Test</p>
+        </div>
         <button type="submit">Search</button>
       </form>
-      <div class="forecast">
+      <div class="forecast hidden">
         <h2 class="city-name">City Name</h2>
         <div class="today">
           <h3 class="condition">Condition</h3>

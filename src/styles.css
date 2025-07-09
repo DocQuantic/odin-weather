@@ -59,6 +59,16 @@ main{
     border-radius: 5px;
     padding: 0.1rem 0.3rem;
   }
+
+  > .input-city{
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    color: brown;
+    border-radius: 0 0 5px 5px;
+    text-align: center;
+  }
 }
 
 .forecast{
@@ -125,4 +135,8 @@ main{
   .today{
     font-size: 1.3rem;
   }
+}
+
+.hidden{
+  display: none;
 }
