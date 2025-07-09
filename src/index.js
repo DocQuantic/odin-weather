@@ -34,7 +34,6 @@ citySearchForm.addEventListener("submit", async (event) => {
 
             updateUIFromForecast(forecast)
         } catch(error) {
-            console.dir(error);
             citySearchFieldError.textContent = error.message;
             citySearchFieldError.className = "error-msg active";
         }

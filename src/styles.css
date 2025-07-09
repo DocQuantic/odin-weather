@@ -23,7 +23,7 @@ html{
   --title-color: rgb(241, 241, 255);
 }
 
-input,
+input[type="text"],
 button{
   appearance: none;
   font: inherit;
@@ -74,7 +74,7 @@ main{
 .forecast{
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 3rem;
   justify-content: center;
   align-items: center;
 
@@ -130,10 +130,16 @@ main{
         height: 4em;
       }
     }
+
   }
 
   .today{
     font-size: 1.3rem;
+  }
+
+  > .unit-select form{
+    display: flex;
+    gap: 2rem;
   }
 }
 
