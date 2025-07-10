@@ -2,75 +2,78 @@ import "./styles.css";
 import { fetchWeatherAPI, extractForecastFromJSON } from "./Modules/weather";
 import { updateUIFromForecast } from "./Modules/UI";
 
-const forecastElement = document.querySelector(".forecast")
-const citySearchForm = document.querySelector(".city-select")
-const citySearchField = document.querySelector("#city")
-const citySearchFieldError = document.querySelector(".error-msg")
+const forecastElement = document.querySelector(".forecast");
+const citySearchForm = document.querySelector(".city-select");
+const citySearchField = document.querySelector("#city");
+const citySearchFieldError = document.querySelector(".error-msg");
 const tempUnitForm = document.querySelector(".unit-select > form");
 
-let currentUnit = "metric"
-let forecast = undefined
+let currentUnit = "metric";
+let forecast = undefined;
 
 tempUnitForm.addEventListener("click", async (event) => {
-    switch(event.target.id){
-        case "celsius":
-            if(currentUnit !== "metric"){
-                currentUnit = "metric"
-                let weatherData = await fetchWeatherAPI(citySearchField.value, "metric")
-                forecast = extractForecastFromJSON(weatherData)
-                updateUIFromForecast(forecast, currentUnit)
-            }
-            break;
-        case "farenheit":
-            if(currentUnit !== "imperial"){
-                currentUnit = "imperial"
-                let weatherData = await fetchWeatherAPI(citySearchField.value, "us")
-                forecast = extractForecastFromJSON(weatherData)
-                updateUIFromForecast(forecast, currentUnit)
-            }
-            break;
-    }
-})
+  switch (event.target.id) {
+    case "celsius":
+      if (currentUnit !== "metric") {
+        currentUnit = "metric";
+        let weatherData = await fetchWeatherAPI(
+          citySearchField.value,
+          "metric",
+        );
+        forecast = extractForecastFromJSON(weatherData);
+        updateUIFromForecast(forecast, currentUnit);
+      }
+      break;
+    case "farenheit":
+      if (currentUnit !== "imperial") {
+        currentUnit = "imperial";
+        let weatherData = await fetchWeatherAPI(citySearchField.value, "us");
+        forecast = extractForecastFromJSON(weatherData);
+        updateUIFromForecast(forecast, currentUnit);
+      }
+      break;
+  }
+});
 
 citySearchField.addEventListener("input", () => {
-        
-        if(citySearchField.validity.valid){
-            citySearchFieldError.textContent = "";
-            citySearchFieldError.className = "error-msg";
-        } else {
-            showInputError();
-        }
-    })
+  if (citySearchField.validity.valid) {
+    citySearchFieldError.textContent = "";
+    citySearchFieldError.className = "error-msg";
+  } else {
+    showInputError();
+  }
+});
 
 citySearchForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const formValidity = citySearchField.checkValidity();
+  const formValidity = citySearchField.checkValidity();
 
-    if(!formValidity){
-        showInputError()
-        return;
-    } else {
-        try{
-            let weatherData = await fetchWeatherAPI(citySearchField.value, "metric")
-            forecast = extractForecastFromJSON(weatherData)
+  if (!formValidity) {
+    showInputError();
+    return;
+  } else {
+    try {
+      let weatherData = await fetchWeatherAPI(citySearchField.value, "metric");
+      forecast = extractForecastFromJSON(weatherData);
 
-            forecastElement.className = "forecast"
+      forecastElement.className = "forecast";
 
-            updateUIFromForecast(forecast, currentUnit)
-        } catch(error) {
-            citySearchFieldError.textContent = error.message;
-            citySearchFieldError.className = "error-msg active";
-        }
+      updateUIFromForecast(forecast, currentUnit);
+    } catch (error) {
+      citySearchFieldError.textContent = error.message;
+      citySearchFieldError.className = "error-msg active";
     }
-})
+  }
+});
 
 function showInputError() {
-    if(citySearchField.validity.valueMissing){
-        citySearchFieldError.textContent = "You need to enter a city name";
-    } else if(citySearchField.validity.patternMismatch){
-        citySearchFieldError.textContent = "City name is not valid. It must contain only letters, spaces or -";
-    }
+  if (citySearchField.validity.valueMissing) {
+    citySearchFieldError.textContent = "You need to enter a city name";
+  } else if (citySearchField.validity.patternMismatch) {
+    citySearchFieldError.textContent =
+      "City name is not valid. It must contain only letters, spaces or -";
+  }
 
-    citySearchFieldError.className = "error-msg active";
+  citySearchFieldError.className = "error-msg active";
 }
