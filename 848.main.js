@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkweb_dev_template=self.webpackChunkweb_dev_template||[]).push([[848],{848:(e,p,t)=>{e.exports=t.p+"662892eedf911e29e971.png"}}]);
