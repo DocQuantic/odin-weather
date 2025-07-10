@@ -1,10 +1,9 @@
 # Description
 
-This repository contains template code for a web dev environment with node.js
+This project is just another weather app web page. 
 
-It allows to rapidly setup basic html, css and js files.
-It also implements webpack, with custom node scripts like :
+The aim of this project was to learn how to fetch web API.
 
-- dev : starts development environment with live web page update
-- build : builds the src/ folder into dist/ using webpack
-- deploy : deploys the dist/ folder to git for use with git pages
+This web page allows to select a city in the world and it returns weather forecast for the next 5 days. It is also possible to switch from celsius to farenheit units.
+
+Live link: https://docquantic.github.io/odin-weather/
