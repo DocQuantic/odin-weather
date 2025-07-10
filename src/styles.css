@@ -61,6 +61,7 @@ main {
     border: 2px solid grey;
     border-radius: 5px;
     padding: 0.1rem 0.3rem;
+    font: inherit;
   }
 
   & .input-city {
