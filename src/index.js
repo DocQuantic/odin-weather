@@ -6,6 +6,31 @@ const forecastElement = document.querySelector(".forecast")
 const citySearchForm = document.querySelector(".city-select")
 const citySearchField = document.querySelector("#city")
 const citySearchFieldError = document.querySelector(".error-msg")
+const tempUnitForm = document.querySelector(".unit-select > form");
+
+let currentUnit = "metric"
+let forecast = undefined
+
+tempUnitForm.addEventListener("click", async (event) => {
+    switch(event.target.id){
+        case "celsius":
+            if(currentUnit !== "metric"){
+                currentUnit = "metric"
+                let weatherData = await fetchWeatherAPI(citySearchField.value, "metric")
+                forecast = extractForecastFromJSON(weatherData)
+                updateUIFromForecast(forecast, currentUnit)
+            }
+            break;
+        case "farenheit":
+            if(currentUnit !== "imperial"){
+                currentUnit = "imperial"
+                let weatherData = await fetchWeatherAPI(citySearchField.value, "us")
+                forecast = extractForecastFromJSON(weatherData)
+                updateUIFromForecast(forecast, currentUnit)
+            }
+            break;
+    }
+})
 
 citySearchField.addEventListener("input", () => {
         
@@ -28,11 +53,11 @@ citySearchForm.addEventListener("submit", async (event) => {
     } else {
         try{
             let weatherData = await fetchWeatherAPI(citySearchField.value, "metric")
-            let forecast = extractForecastFromJSON(weatherData)
+            forecast = extractForecastFromJSON(weatherData)
 
             forecastElement.className = "forecast"
 
-            updateUIFromForecast(forecast)
+            updateUIFromForecast(forecast, currentUnit)
         } catch(error) {
             citySearchFieldError.textContent = error.message;
             citySearchFieldError.className = "error-msg active";

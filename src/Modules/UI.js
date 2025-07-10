@@ -14,14 +14,16 @@ function getUIElements(){
     return elements;
 }
 
-async function setDayWeather(dayElement, weather, isToday){
+async function setDayWeather(dayElement, weather, unit, isToday){
+    const tempUnitLetter = unit === "metric" ? "C" : "F"
+    const speedUnit = unit === "metric" ? "km/h" : "mph"
     const currentTempElement = dayElement.querySelector(".current-temp");
     const minMaxTempElement = dayElement.querySelector(".min-max");
     const windElement = dayElement.querySelector(".wind");
 
-    currentTempElement.textContent = `${weather.currentTemp} °C`;
-    minMaxTempElement.textContent = `${weather.minTemp}/${weather.maxTemp} °C`;
-    windElement.textContent = `${weather.wind} km/h`;
+    currentTempElement.textContent = `${weather.currentTemp} °${tempUnitLetter}`;
+    minMaxTempElement.textContent = `${weather.minTemp}/${weather.maxTemp} °${tempUnitLetter}`;
+    windElement.textContent = `${weather.wind} ${speedUnit}`;
 
     if(isToday){
         const conditionsElement = dayElement.querySelector(".condition");
@@ -46,14 +48,14 @@ async function setDayWeather(dayElement, weather, isToday){
     }
 }
 
-export function updateUIFromForecast(forecast) {
+export function updateUIFromForecast(forecast, unit) {
     const elements = getUIElements();
 
     elements.cityName.textContent = forecast[0].address;
     
-    setDayWeather(elements.today, forecast[0], true)
+    setDayWeather(elements.today, forecast[0], unit, true)
 
     elements.nextDays.forEach((day, index) => {
-        setDayWeather(day, forecast[index+1], false)
+        setDayWeather(day, forecast[index+1], unit, false)
     })
 }
